@@ -9,6 +9,11 @@
 }
 
 @font-face{
+    font-family: Pirate-Scroll;
+    src:url(https://github.com/arcanemutterings/knave-sheet/blob/assets/Pirate%20Scroll.otf?raw=true);
+}
+
+@font-face{
     font-family: Alegreya;
     src:local("Alegreya"), local("Alegreya-Regular"), url(https://github.com/arcanemutterings/Black-Hack-2e-Character-Sheet/blob/master/Alegreya-Regular.ttf?raw=true);
 }
@@ -18,14 +23,19 @@
 }
 
 .sheet-heading {
-    font-family: King Arthur Legend;
-    font-size: 70%;
+    font-family: Pirate-Scroll;
+    font-size: 160%;
+}
+
+.sheet-attribute {
+    font-family: Pirate-Scroll;
+    font-size: 220%;
 }
 
 .sheet-main-container {
     width: 100%;
     display: grid;
-    grid-gap: 0.5em;
+    grid-gap: 2em;
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
         "name alignment traits traits"
@@ -66,6 +76,12 @@
     grid-area: attributes;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 3fr;
+    justify-items: center;
+    align-items: center;
+}
+
+.sheet-attr-desc {
+    font-size: 90%;
 }
 
 
@@ -99,4 +115,8 @@ textarea {
 
 .sheet-notes {
     grid-area: notes;
+}
+
+.sheet-notes-textarea {
+    min-height: 10em;
 }

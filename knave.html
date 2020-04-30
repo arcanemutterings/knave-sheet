@@ -60,59 +60,61 @@
         <input type="number" name="attr_xp" />
     </div>
     <div class="sheet-hp">
+        <span>Current</span><span>Max</span><br>
         <input type="number" name="attr_hp" />
-        <span class="sheet-heading">HIT POINTS</span>
+        <span class="sheet-heading">HP</span>
         <input type="number" name="attr_hp_max" />
     </div>
     <div class="sheet-armor">
+        <span>Defense</span><span>Bonus</span><br>
         <input type="number" name="attr_armor_defense" />
         <span class="sheet-heading">ARMOR</span>
         <span name="attr_armor_bonus"></span>
     </div>
     <div class="sheet-attributes">
-        <span>Defense</span>
-        <span>Attribute</span>
-        <span>Bonus</span>
-        <span>Description</span>
+        <span><strong>Defense</strong></span>
+        <span><strong>Attribute</strong></span>
+        <span><strong>Bonus</strong></span>
+        <span><strong>Description</strong></span>
 
         <span name="attr_str_defense"></span>
-        <span>STR</span>
+        <span class="sheet-attribute">STR</span>
         <input type="number" name="attr_str_bonus" />
-        <span>Used for melee attacks and saves requiring physical power, like lifting gates, bending bars, etc.</span>
+        <span class="sheet-attr-desc">Used for melee attacks and saves requiring physical power, like lifting gates, bending bars, etc.</span>
 
         <span name="attr_dex_defense"></span>
-        <span>DEX</span>
+        <span class="sheet-attribute">DEX</span>
         <input type="number" name="attr_dex_bonus" />
-        <span>Used for saves requiring poise, speed, and reflexes, like dodging, climbing, sneaking, balancing,
+        <span class="sheet-attr-desc">Used for saves requiring poise, speed, and reflexes, like dodging, climbing, sneaking, balancing,
             etc.</span>
 
         <span name="attr_con_defense"></span>
-        CON
+        <span class="sheet-attribute">CON</span>
         <input type="number" name="attr_con_bonus" />
-        <span>Used for saves to resist poison, sickness, cold, etc. The Constitution bonus is added to healing rolls. A
+        <span class="sheet-attr-desc">Used for saves to resist poison, sickness, cold, etc. The Constitution bonus is added to healing rolls. A
             PC’s number of item slots is always equal to their Constitution defense.</span>
 
         <span name="attr_int_defense"></span>
-        INT
+        <span class="sheet-attribute">INT</span>
         <input type="number" name="attr_int_bonus" />
-        <span>Used for saves requiring concentration and precision, such as wielding magic, resisting magical effects,
+        <span class="sheet-attr-desc">Used for saves requiring concentration and precision, such as wielding magic, resisting magical effects,
             recalling lore, crafting objects, tinkering with machinery, picking pockets, etc.</span>
 
         <span name="attr_wis_defense"></span>
-        WIS
+        <span class="sheet-attribute">WIS</span>
         <input type="number" name="attr_wis_bonus" />
-        <span>Used for ranged attacks and saves requiring perception and intuition, such as tracking, navigating,
+        <span class="sheet-attr-desc">Used for ranged attacks and saves requiring perception and intuition, such as tracking, navigating,
             searching for secret doors, detecting illusions, etc.</span>
 
         <span name="attr_cha_defense"></span>
-        CHA
+        <span class="sheet-attribute">CHA</span>
         <input type="number" name="attr_cha_bonus" />
-        <span>Used for saves to persuade, deceive, interrogate, intimidate, charm, provoke, etc. PCs may employ a number
+        <span class="sheet-attr-desc">Used for saves to persuade, deceive, interrogate, intimidate, charm, provoke, etc. PCs may employ a number
             of hirelings equal to their Charisma bonus.</span>
 
     </div>
     <div class="sheet-traits">
-        TRAITS
+            <span class="sheet-heading">TRAITS</span>
         <div>
             Used to be a
             <input type="text" name="attr_background" placeholder="Background" class="sheet-trait-input" />
@@ -140,10 +142,13 @@
 
     </div>
     <div class="sheet-inventory">
-        <span>INVENTORY
+        <span class="sheet-heading">INVENTORY
             (<span name="attr_slots_in_use"></span>/
             <span name="attr_con_defense"></span>)
         </span>
+        <br>
+        <span>Item</span><span>Quality/Quantity</span><span>Slots</span>
+        <br>
         <fieldset class="repeating_inventory">
             <div class="sheet-item">
                 <input type="text" name="attr_item" />
@@ -154,7 +159,7 @@
     </div>
 
     <div class="sheet-notes">
-        <span>NOTES</span>
-        <textarea></textarea>
+        <span class="sheet-heading">NOTES</span>
+        <textarea class="sheet-notes-textarea"></textarea>
     </div>
 </div>
