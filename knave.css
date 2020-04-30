@@ -1,0 +1,97 @@
+@font-face{
+    font-family:Cocogoose-Letterpress;
+    src:url(https://github.com/arcanemutterings/Black-Hack-2e-Character-Sheet/blob/master/COCOGOOSELETTERPRESS%20TRIAL.ttf?raw=true);
+}
+
+@font-face{
+    font-family: Alegreya;
+    src:local("Alegreya"), local("Alegreya-Regular"), url(https://github.com/arcanemutterings/Black-Hack-2e-Character-Sheet/blob/master/Alegreya-Regular.ttf?raw=true);
+}
+
+* {
+    font-family: Alegreya;
+}
+
+.sheet-heading {
+    font-family: Cocogoose-Letterpress;
+    font-size: 120%;
+}
+
+.sheet-main-container {
+    width: 100%;
+    display: grid;
+    grid-gap: 0.5em;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+        "name alignment traits traits"
+        "level xp traits traits"
+        "hp armor traits traits"
+        "attributes attributes inv inv"
+        "notes notes notes notes";
+}
+
+.sheet-main-container > div {
+   background: lightgray;
+}
+
+.sheet-name {
+    grid-area: name;
+}
+
+.sheet-alignment {
+    grid-area: alignment;
+}
+
+.sheet-level {
+    grid-area: level;
+}
+
+.sheet-xp {
+    grid-area: xp;
+} 
+.sheet-hp {
+    grid-area: hp;
+}
+
+.sheet-armor {
+    grid-area: armor;
+}
+
+.sheet-attributes {
+    grid-area: attributes;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 3fr;
+}
+
+
+.sheet-traits {
+    grid-area: traits;
+}
+
+.sheet-trait-input {
+    width: 6em;
+    /*background: #DCDCDC;*/
+}
+
+::placeholder {
+    color: gray;
+}
+
+.sheet-inventory {
+    grid-area: inv;
+}
+
+textarea {
+    width: 97%;
+    height: 3em;
+    /*background: #DCDCDC;*/
+}
+
+.sheet-item {
+    background: darkgray;
+    width: 100%;
+}
+
+.sheet-notes {
+    grid-area: notes;
+}

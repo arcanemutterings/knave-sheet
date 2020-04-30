@@ -1,0 +1,160 @@
+<script type="text/worker">
+    const repeatingSum = (destination, section, fields, multiplier = 1) => {
+        if (!Array.isArray(fields)) fields = [fields];
+        getSectionIDs(`repeating_${section}`, idArray => {
+            const attrArray = idArray.reduce( (m,id) => [...m, ...(fields.map(field => `repeating_${section}_${id}_${field}`))],[]);
+            getAttrs(attrArray, v => {
+                     // getValue: if not a number, returns 1 if it is 'on' (checkbox), otherwise returns 0..
+                const getValue = (section, id,field) => parseFloat(v[`repeating_${section}_${id}_${field}`]) || (v[`repeating_${section}_${id}_${field}`] === 'on' ? 1 : 0); 
+                const sumTotal = idArray.reduce((total, id) => total + fields.reduce((subtotal,field) => subtotal * getValue(section, id,field),1),0);
+                setAttrs({[destination]: sumTotal * multiplier});    
+            });
+        });
+    };
+
+    let attributePairs = {
+        "str_bonus": "str_defense",
+        "dex_bonus": "dex_defense",
+        "con_bonus": "con_defense",
+        "int_bonus": "int_defense",
+        "wis_bonus": "wis_defense",
+        "cha_bonus": "cha_defense"
+    };
+    
+    on('change:repeating_inventory remove:repeating_inventory', function() {
+        repeatingSum("slots_in_use","inventory", "item_slot");
+    });
+
+        
+    on("change:armor_defense", function(eventInfo) {
+        setAttrs({
+            armor_bonus: eventInfo.newValue - 10
+        });
+    });
+
+    on("change:str_bonus change:dex_bonus change:con_bonus change:int_bonus change:wis_bonus change:cha_bonus", function(eventInfo) {
+        console.log("changed value: " + eventInfo.sourceAttribute);
+        let attributeDefense = attributePairs[eventInfo.sourceAttribute];
+        setAttrs({
+            [attributePairs[eventInfo.sourceAttribute]]: parseInt(eventInfo.newValue) + 10
+        });
+    });
+
+</script>
+
+<div class="sheet-main-container">
+    <div class="sheet-name">
+        <h3 class="sheet-heading">NAME</h3>
+        <input type="text" name="attr_name" />
+    </div>
+    <div class="sheet-alignment">
+        ALIGNMENT
+        <input type="text" name="attr_alignment" />
+    </div>
+    <div class="sheet-level">
+        LEVEL
+        <input type="number" name="attr_level" />
+    </div>
+    <div class="sheet-xp">
+        XP
+        <input type="number" name="attr_xp" />
+    </div>
+    <div class="sheet-hp">
+        <input type="number" name="attr_hp" />
+        HIT POINTS
+        <input type="number" name="attr_hp_max" />
+    </div>
+    <div class="sheet-armor">
+        <input type="number" name="attr_armor_defense" />
+        ARMOR
+        <span name="attr_armor_bonus"></span>
+    </div>
+    <div class="sheet-attributes">
+        <span>Defense</span>
+        <span>Attribute</span>
+        <span>Bonus</span>
+        <span>Description</span>
+
+        <span name="attr_str_defense"></span>
+        <span>STR</span>
+        <input type="number" name="attr_str_bonus" />
+        <span>Used for melee attacks and saves requiring physical power, like lifting gates, bending bars, etc.</span>
+
+        <span name="attr_dex_defense"></span>
+        <span>DEX</span>
+        <input type="number" name="attr_dex_bonus" />
+        <span>Used for saves requiring poise, speed, and reflexes, like dodging, climbing, sneaking, balancing,
+            etc.</span>
+
+        <span name="attr_con_defense"></span>
+        CON
+        <input type="number" name="attr_con_bonus" />
+        <span>Used for saves to resist poison, sickness, cold, etc. The Constitution bonus is added to healing rolls. A
+            PC’s number of item slots is always equal to their Constitution defense.</span>
+
+        <span name="attr_int_defense"></span>
+        INT
+        <input type="number" name="attr_int_bonus" />
+        <span>Used for saves requiring concentration and precision, such as wielding magic, resisting magical effects,
+            recalling lore, crafting objects, tinkering with machinery, picking pockets, etc.</span>
+
+        <span name="attr_wis_defense"></span>
+        WIS
+        <input type="number" name="attr_wis_bonus" />
+        <span>Used for ranged attacks and saves requiring perception and intuition, such as tracking, navigating,
+            searching for secret doors, detecting illusions, etc.</span>
+
+        <span name="attr_cha_defense"></span>
+        CHA
+        <input type="number" name="attr_cha_bonus" />
+        <span>Used for saves to persuade, deceive, interrogate, intimidate, charm, provoke, etc. PCs may employ a number
+            of hirelings equal to their Charisma bonus.</span>
+
+    </div>
+    <div class="sheet-traits">
+        TRAITS
+        <div>
+            Used to be a
+            <input type="text" name="attr_background" placeholder="Background" class="sheet-trait-input" />
+            but was
+            <input type="text" name="attr_misfortunes" placeholder="Misfortune" class="sheet-trait-input" />.
+            Wears
+            <input type="text" name="attr_clothes" placeholder="Clothing" class="sheet-trait-input" />
+            clothes, and has
+            <input type="text" name="attr_speech" placeholder="Speech" class="sheet-trait-input" />
+            speech. Has a
+            <input type="text" name="attr_physique" placeholder="Physique" class="sheet-trait-input" />
+            physique, a
+            <input type="text" name="attr_face" placeholder="Face" class="sheet-trait-input" />
+            face,
+            <input type="text" name="attr_skin" placeholder="Skin" class="sheet-trait-input" />
+            skin and
+            <input type="text" name="attr_hair" placeholder="Hair" class="sheet-trait-input" />
+            hair. Is
+            <input type="text" name="attr_virtue" placeholder="Virtue" class="sheet-trait-input" />
+            , but
+            <input type="text" name="attr_vice" placeholder="Vice" class="sheet-trait-input" />.
+            Entering the dungeon, because
+            <textarea name="attr_dungeon_motivation" placeholder="Dungeon Motivation"></textarea>
+        </div>
+
+    </div>
+    <div class="sheet-inventory">
+        <span>INVENTORY
+            (<span name="attr_slots_in_use"></span>/
+            <span name="attr_con_defense"></span>)
+        </span>
+        <fieldset class="repeating_inventory">
+            <div class="sheet-item">
+                <input type="text" name="attr_item" />
+                <input type="number" name="attr_item_quality" />
+                <input type="number" name="attr_item_slot">
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="sheet-notes">
+        <span>NOTES</span>
+        <textarea></textarea>
+    </div>
+</div>
