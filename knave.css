@@ -1,6 +1,6 @@
 @font-face{
-    font-family:Cocogoose-Letterpress;
-    src:url(https://github.com/arcanemutterings/Black-Hack-2e-Character-Sheet/blob/master/COCOGOOSELETTERPRESS%20TRIAL.ttf?raw=true);
+    font-family:Sebaldus-Gotisch;
+    src:url(https://github.com/arcanemutterings/knave-sheet/blob/assets/Sebaldus-Gotisch.ttf?raw=true);
 }
 
 @font-face{
@@ -13,7 +13,7 @@
 }
 
 .sheet-heading {
-    font-family: Cocogoose-Letterpress;
+    font-family: Sebaldus-Gotisch;
     font-size: 120%;
 }
 
