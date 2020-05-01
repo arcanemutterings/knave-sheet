@@ -48,28 +48,28 @@
         <input type="text" name="attr_name" />
     </div>
     <div class="sheet-alignment">
-            <span class="sheet-heading">ALIGNMENT</span>
+        <span class="sheet-heading">ALIGNMENT</span>
         <input type="text" name="attr_alignment" />
     </div>
     <div class="sheet-level">
-            <span class="sheet-heading">LEVEL</span>
+        <span class="sheet-heading">LEVEL</span>
         <input type="number" name="attr_level" />
     </div>
     <div class="sheet-xp">
-            <span class="sheet-heading">XP</span>
+        <span class="sheet-heading">XP</span>
         <input type="number" name="attr_xp" />
     </div>
     <div class="sheet-hp">
-        <span>Current</span><span>Max</span><br>
-        <input type="number" name="attr_hp" />
+        <strong> </strong><strong>Current</strong><strong>Max</strong>
         <span class="sheet-heading">HP</span>
+        <input type="number" name="attr_hp" />
         <input type="number" name="attr_hp_max" />
     </div>
     <div class="sheet-armor">
-        <span>Defense</span><span>Bonus</span><br>
+        <span> </span><strong>Defense</strong><strong>Bonus</strong>
+        <span class="sheet-heading sheet-armor-heading">ARMOR</span>
         <input type="number" name="attr_armor_defense" />
-        <span class="sheet-heading">ARMOR</span>
-        <span name="attr_armor_bonus"></span>
+        <span name="attr_armor_bonus" class="sheet-armor-bonus"></span>
     </div>
     <div class="sheet-attributes">
         <span><strong>Defense</strong></span>
@@ -77,44 +77,50 @@
         <span><strong>Bonus</strong></span>
         <span><strong>Description</strong></span>
 
-        <span name="attr_str_defense"></span>
+        <span name="attr_str_defense" class="sheet-attribute-defense"></span>
         <span class="sheet-attribute">STR</span>
         <input type="number" name="attr_str_bonus" />
-        <span class="sheet-attr-desc">Used for melee attacks and saves requiring physical power, like lifting gates, bending bars, etc.</span>
+        <span class="sheet-attr-desc">Used for melee attacks and saves requiring physical power, like lifting gates,
+            bending bars, etc.</span>
 
-        <span name="attr_dex_defense"></span>
+        <span name="attr_dex_defense" class="sheet-attribute-defense"></span>
         <span class="sheet-attribute">DEX</span>
         <input type="number" name="attr_dex_bonus" />
-        <span class="sheet-attr-desc">Used for saves requiring poise, speed, and reflexes, like dodging, climbing, sneaking, balancing,
+        <span class="sheet-attr-desc">Used for saves requiring poise, speed, and reflexes, like dodging, climbing,
+            sneaking, balancing,
             etc.</span>
 
-        <span name="attr_con_defense"></span>
+        <span name="attr_con_defense" class="sheet-attribute-defense"></span>
         <span class="sheet-attribute">CON</span>
         <input type="number" name="attr_con_bonus" />
-        <span class="sheet-attr-desc">Used for saves to resist poison, sickness, cold, etc. The Constitution bonus is added to healing rolls. A
+        <span class="sheet-attr-desc">Used for saves to resist poison, sickness, cold, etc. The Constitution bonus is
+            added to healing rolls. A
             PC’s number of item slots is always equal to their Constitution defense.</span>
 
-        <span name="attr_int_defense"></span>
+        <span name="attr_int_defense" class="sheet-attribute-defense"></span>
         <span class="sheet-attribute">INT</span>
         <input type="number" name="attr_int_bonus" />
-        <span class="sheet-attr-desc">Used for saves requiring concentration and precision, such as wielding magic, resisting magical effects,
+        <span class="sheet-attr-desc">Used for saves requiring concentration and precision, such as wielding magic,
+            resisting magical effects,
             recalling lore, crafting objects, tinkering with machinery, picking pockets, etc.</span>
 
-        <span name="attr_wis_defense"></span>
+        <span name="attr_wis_defense" class="sheet-attribute-defense"></span>
         <span class="sheet-attribute">WIS</span>
         <input type="number" name="attr_wis_bonus" />
-        <span class="sheet-attr-desc">Used for ranged attacks and saves requiring perception and intuition, such as tracking, navigating,
+        <span class="sheet-attr-desc">Used for ranged attacks and saves requiring perception and intuition, such as
+            tracking, navigating,
             searching for secret doors, detecting illusions, etc.</span>
 
-        <span name="attr_cha_defense"></span>
+        <span name="attr_cha_defense" class="sheet-attribute-defense"></span>
         <span class="sheet-attribute">CHA</span>
         <input type="number" name="attr_cha_bonus" />
-        <span class="sheet-attr-desc">Used for saves to persuade, deceive, interrogate, intimidate, charm, provoke, etc. PCs may employ a number
+        <span class="sheet-attr-desc">Used for saves to persuade, deceive, interrogate, intimidate, charm, provoke, etc.
+            PCs may employ a number
             of hirelings equal to their Charisma bonus.</span>
 
     </div>
     <div class="sheet-traits">
-            <span class="sheet-heading">TRAITS</span>
+        <span class="sheet-heading">TRAITS</span>
         <div>
             Used to be a
             <input type="text" name="attr_background" placeholder="Background" class="sheet-trait-input" />
@@ -143,17 +149,18 @@
     </div>
     <div class="sheet-inventory">
         <span class="sheet-heading">INVENTORY
-            (<span name="attr_slots_in_use"></span>/
-            <span name="attr_con_defense"></span>)
+            (<span name="attr_slots_in_use" class="sheet-inv-num"></span>/
+            <span name="attr_con_defense" class="sheet-inv-num"></span>)
         </span>
         <br>
-        <span>Item</span><span>Quality/Quantity</span><span>Slots</span>
-        <br>
+        <div class="sheet-item">
+            <strong class="sheet-item-desc">Item</strong><strong>Quality/<br>Quantity</strong><strong class = "sheet-slots-counter">Slots</strong>
+        </div>
         <fieldset class="repeating_inventory">
             <div class="sheet-item">
-                <input type="text" name="attr_item" />
-                <input type="number" name="attr_item_quality" />
-                <input type="number" name="attr_item_slot">
+                <input type="text" name="attr_item" class="sheet-item-desc" />
+                <input type="number" name="attr_item_quality" class="sheet-item-qua" />
+                <input type="number" name="attr_item_slot" class="sheet-item-slots">
             </div>
         </fieldset>
     </div>

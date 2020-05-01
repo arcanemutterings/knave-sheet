@@ -20,6 +20,12 @@
 
 * {
     font-family: Alegreya;
+    color:black;
+    font-size: 15px;
+}
+
+input[type='number'] {
+    text-align: end;
 }
 
 .sheet-heading {
@@ -29,13 +35,14 @@
 
 .sheet-attribute {
     font-family: Pirate-Scroll;
-    font-size: 220%;
+    font-size: 210%;
 }
 
 .sheet-main-container {
     width: 100%;
     display: grid;
-    grid-gap: 2em;
+    grid-column-gap: 1em;
+    grid-row-gap: 2em;
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
         "name alignment traits traits"
@@ -57,28 +64,92 @@
     grid-area: alignment;
 }
 
+.sheet-name > input,  .sheet-alignment > input {
+    font-size: 1.2em;
+}
+
 .sheet-level {
     grid-area: level;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+.sheet-level > input {
+    font-size: 1.2em;
+    max-width: 45px;
 }
 
 .sheet-xp {
     grid-area: xp;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
 } 
+
+.sheet-xp > input {
+    font-size: 1.2em;
+    min-width: 75px;
+}
+
 .sheet-hp {
     grid-area: hp;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 30px 20px;
+    align-items: center;
+    justify-items: center;
+}
+
+.sheet-hp > input {
+    font-size: 1.2em;
+    max-width: 45px;
 }
 
 .sheet-armor {
     grid-area: armor;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 30px 20px;
+    align-items: center;
+    justify-items: center;
+}
+
+.sheet-armor > input {
+    font-size: 1.2em;
+    max-width: 45px;
+}
+
+.sheet-armor-bonus {
+    font-size: 1.2em;
+}
+
+.sheet-armor-heading {
+    padding-right: 10px;
 }
 
 .sheet-attributes {
+    padding-top: 20px;
     grid-area: attributes;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 3fr;
-    justify-items: center;
+    grid-template-rows: 0px repeat(6, 80px);
     align-items: center;
+    grid-row-gap: 1em;
+    justify-items: center;
 }
+
+.sheet-attributes > input {
+    font-size: 1.5em;
+    max-width: 50px;
+}
+
+.sheet-attribute-defense {
+    font-size: 1.5em;
+}
+
 
 .sheet-attr-desc {
     font-size: 90%;
@@ -109,8 +180,17 @@ textarea {
 }
 
 .sheet-item {
-    background: darkgray;
-    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.sheet-item-desc {
+    flex-grow: 1;
+}
+
+.sheet-slots-counter {
+    margin-left: 10px;
+    padding-right: 10px;
 }
 
 .sheet-notes {
@@ -119,4 +199,9 @@ textarea {
 
 .sheet-notes-textarea {
     min-height: 10em;
+}
+
+.sheet-inv-num {
+    font-family: Pirate-Scroll;
+    font-size: 100%;
 }
